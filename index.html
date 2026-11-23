@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090909">
+<title>NEXORA CONNECT | Member Portal</title>
+<style>
+:root{--bg:#080909;--panel:#111313;--panel2:#151817;--line:#292b27;--gold:#e9bd55;--gold2:#ffda82;--muted:#a7a79f;--white:#f4f3ee;--green:#77d69a}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 50% -20%,#29200d 0,#090a09 45%,#070808 100%);color:var(--white);font:15px/1.5 Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;min-height:100vh}
+button,input,select{font:inherit}button{cursor:pointer}.wrap{max-width:760px;margin:auto;padding:20px 15px 50px}.hidden{display:none!important}
+.brand{text-align:center;padding:24px 10px 20px}.brand-mark{width:62px;height:62px;border:1px solid #9d7936;border-radius:18px;margin:0 auto 12px;display:grid;place-items:center;color:var(--gold);font-weight:900;font-size:25px;box-shadow:0 0 35px #d9a93a1b}.brand h1{font-size:25px;letter-spacing:4px;margin:0;color:var(--gold2)}.brand p{margin:5px 0 0;color:#aaa;font-size:10px;letter-spacing:3px}
+.panel{background:linear-gradient(145deg,#141716,#0e1010);border:1px solid var(--line);border-radius:17px;padding:20px;margin:13px 0;box-shadow:0 12px 30px #0005}.eyebrow{color:var(--gold);font-size:11px;letter-spacing:2px;font-weight:700;text-transform:uppercase}.muted{color:var(--muted)}h2{font-size:22px;margin:5px 0 8px}h3{font-size:16px;margin:0 0 8px}
+label{display:block;color:#c5c3b9;font-size:12px;margin:13px 0 6px}input,select{width:100%;background:#090b0b;color:white;border:1px solid #343832;border-radius:10px;padding:13px 14px;outline:none}input:focus,select:focus{border-color:var(--gold)}
+.btn{border:0;border-radius:10px;padding:13px 17px;font-weight:800;background:linear-gradient(100deg,#b88932,#ffdc82);color:#17130b;box-shadow:0 6px 18px #d5a13c25}.btn.secondary{background:#20231f;color:var(--gold2);border:1px solid #51452d;box-shadow:none}.btn.full{width:100%;margin-top:15px}.topline{display:flex;align-items:center;justify-content:space-between;gap:12px}.tag{font-size:10px;color:#f5d78b;border:1px solid #725a2e;border-radius:30px;padding:4px 9px;letter-spacing:1px}
+.demo-note{background:#30250f;border:1px solid #6f5526;color:#f3d38d;border-radius:10px;padding:10px 12px;font-size:11px;text-align:center;margin:10px 0 16px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.stat{background:#0a0c0c;border:1px solid #282b26;border-radius:13px;padding:14px}.stat span{display:block;color:#aaa;font-size:10px;letter-spacing:1.2px;text-transform:uppercase}.stat strong{display:block;color:var(--gold2);font-size:23px;margin-top:5px}
+.searchrow{display:grid;grid-template-columns:1fr auto;gap:8px}.cards{display:grid;gap:10px}.meeting{display:flex;align-items:center;gap:12px;background:#0b0d0d;border:1px solid #292c27;border-radius:14px;padding:14px}.avatar{width:43px;height:43px;flex:0 0 43px;border:1px solid #6b542d;border-radius:50%;display:grid;place-items:center;color:var(--gold2);font-weight:800}.person{font-weight:750}.detail{color:#aaa;font-size:12px}.amount{margin-left:auto;text-align:right;color:var(--gold2);font-size:17px;font-weight:800;white-space:nowrap}.amount small{display:block;font-size:9px;letter-spacing:1px;color:#b9b4a6}
+footer{text-align:center;color:#777;font-size:11px;padding:25px 10px}
+.modal{position:fixed;inset:0;background:#000b;display:grid;place-items:center;padding:16px;z-index:5}.modalbox{width:min(100%,480px);max-height:90vh;overflow:auto;background:#111413;border:1px solid #5b4928;border-radius:17px;padding:20px}
+@media(min-width:620px){.wrap{padding-top:35px}.grid{grid-template-columns:repeat(4,1fr)}.brand h1{font-size:29px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <section id="loginView">
+    <header class="brand"><div class="brand-mark">N</div><h1>NEXORA CONNECT</h1><p>MEMBER NETWORK • INDIA</p></header>
+    <div class="demo-note">DEMO WEBSITE — Sample names, cities and figures are fictional.</div>
+    <div class="panel">
+      <div class="eyebrow">Member access</div><h2>Welcome Back</h2>
+      <p class="muted">Enter your email address to preview the member dashboard.</p>
+      <form id="loginForm"><label for="email">Email Address</label><input id="email" type="email" placeholder="you@example.com" required><button class="btn full" type="submit">INSTANT LOGIN →</button></form>
+      <p class="muted" style="font-size:11px;text-align:center;margin:15px 0 0">Demo preview only. No password or real account is created.</p>
+    </div>
+  </section>
+
+  <section id="dashboard" class="hidden">
+    <header class="topline" style="padding:8px 2px 15px"><div><div class="eyebrow">NEXORA CONNECT</div><div style="font-size:19px;font-weight:800">Member Dashboard</div></div><button class="btn secondary" id="logout">Log out</button></header>
+    <div class="demo-note">DEMO DATA • NOT LIVE • No real meetings or payments are represented.</div>
+    <div class="panel">
+      <div class="topline"><div><div class="muted" style="font-size:12px">WELCOME, MEMBER</div><h2 id="memberName">Guest Member</h2><div class="muted" style="font-size:12px" id="memberEmail"></div></div><span class="tag">✓ DEMO MEMBER</span></div>
+      <div class="muted" style="font-size:12px;margin-top:12px">Service area: All India</div>
+    </div>
+    <div class="grid">
+      <div class="stat"><span>Demo meetings</span><strong>12</strong></div>
+      <div class="stat"><span>Sample cities</span><strong>8</strong></div>
+      <div class="stat"><span>Demo status</span><strong style="font-size:17px">Active</strong></div>
+      <div class="stat"><span>Sample amount</span><strong>₹2.6L</strong></div>
+    </div>
+    <div class="panel">
+      <div class="eyebrow">Explore locations</div><h2>Check Your City</h2>
+      <div class="searchrow"><input id="citySearch" placeholder="Search city (e.g. Jaipur)"><button class="btn" id="searchBtn">Search</button></div>
+      <div class="muted" style="font-size:11px;margin-top:8px">Showing fictional sample entries for preview purposes.</div>
+    </div>
+    <div class="panel">
+      <div class="topline"><div><div class="eyebrow">Member activity</div><h2>Live Meetings</h2></div><span class="tag">SAMPLE LIST</span></div>
+      <div id="meetingList" class="cards"></div>
+      <p id="noResults" class="muted hidden">No sample entries found for this city.</p>
+    </div>
+    <div class="panel">
+      <div class="eyebrow">Need assistance?</div><h3>Registration / Support</h3><p class="muted" style="font-size:13px">Open the demo enquiry form. It will show a local confirmation only and will not send data to a server.</p><button class="btn full" id="openForm">COMPLETE DETAILS</button>
+    </div>
+    <footer>© 2026 NEXORA CONNECT · DEMO PREVIEW</footer>
+  </section>
+</main>
+
+<div id="formModal" class="modal hidden">
+  <div class="modalbox">
+    <div class="topline"><div><div class="eyebrow">Member enquiry</div><h2>Complete Details</h2></div><button class="btn secondary" id="closeForm" aria-label="Close">✕</button></div>
+    <div class="demo-note">Demo form only — information is not stored or submitted.</div>
+    <form id="enquiryForm">
+      <label>Full Name</label><input required placeholder="Enter your name">
+      <label>Mobile Number</label><input required inputmode="tel" pattern="[0-9+ -]{8,16}" placeholder="Enter mobile number">
+      <label>City</label><input required placeholder="Enter your city">
+      <label>Email Address</label><input type="email" required placeholder="Enter email">
+      <button class="btn full" type="submit">SUBMIT DEMO ENQUIRY</button>
+    </form>
+    <p id="formMessage" class="muted hidden" style="font-size:13px">Demo enquiry completed. No information was sent or saved.</p>
+  </div>
+</div>
+<script>
+const demoMeetings=[
+ {name:"Aarav Mehta",city:"Jaipur",state:"Rajasthan",amount:"₹18,000",time:"Just now"},
+ {name:"Rohan Patel",city:"Delhi",state:"Delhi NCR",amount:"₹28,000",time:"2 min ago"},
+ {name:"Kabir Shah",city:"Surat",state:"Gujarat",amount:"₹35,000",time:"8 min ago"},
+ {name:"Vivaan Khan",city:"Ahmedabad",state:"Gujarat",amount:"₹23,000",time:"15 min ago"},
+ {name:"Ishaan Verma",city:"Mumbai",state:"Maharashtra",amount:"₹25,000",time:"22 min ago"},
+ {name:"Reyansh Rao",city:"Bengaluru",state:"Karnataka",amount:"₹21,000",time:"30 min ago"},
+ {name:"Aditya Singh",city:"Lucknow",state:"Uttar Pradesh",amount:"₹19,000",time:"45 min ago"},
+ {name:"Arjun Nair",city:"Kochi",state:"Kerala",amount:"₹26,000",time:"1 hour ago"},
+ {name:"Dev Malhotra",city:"Jaipur",state:"Rajasthan",amount:"₹24,000",time:"1 hour ago"},
+ {name:"Neil Joshi",city:"Pune",state:"Maharashtra",amount:"₹22,000",time:"2 hours ago"},
+ {name:"Yash Gupta",city:"Delhi",state:"Delhi NCR",amount:"₹30,000",time:"2 hours ago"},
+ {name:"Krish Das",city:"Surat",state:"Gujarat",amount:"₹20,000",time:"3 hours ago"}
+];
+const $=id=>document.getElementById(id);
+function render(list){$("meetingList").innerHTML=list.map(m=>`<article class="meeting"><div class="avatar">${m.name.split(" ").map(x=>x[0]).slice(0,2).join("")}</div><div><div class="person">${m.name} <span style="color:#e9bd55">✦</span></div><div class="detail">Meeting sample · ${m.city}, ${m.state}</div><div class="detail">◷ ${m.time}</div></div><div class="amount">${m.amount}<small>DEMO FIGURE</small></div></article>`).join("");$("noResults").classList.toggle("hidden",list.length>0)}
+$("loginForm").addEventListener("submit",e=>{e.preventDefault();const email=$("email").value.trim();$("memberEmail").textContent=email;$("memberName").textContent=email.split("@")[0].replace(/[._-]/g," ").replace(/\b\w/g,c=>c.toUpperCase())||"Guest Member";$("loginView").classList.add("hidden");$("dashboard").classList.remove("hidden");render(demoMeetings);window.scrollTo(0,0)});
+$("logout").onclick=()=>{$("dashboard").classList.add("hidden");$("loginView").classList.remove("hidden");window.scrollTo(0,0)};
+function search(){const q=$("citySearch").value.trim().toLowerCase();render(demoMeetings.filter(m=>(m.city+" "+m.state).toLowerCase().includes(q)))}
+$("searchBtn").onclick=search;$("citySearch").addEventListener("keydown",e=>{if(e.key==="Enter")search()});
+$("openForm").onclick=()=>{$("formModal").classList.remove("hidden");$("formMessage").classList.add("hidden")};
+$("closeForm").onclick=()=>$("formModal").classList.add("hidden");
+$("formModal").addEventListener("click",e=>{if(e.target===$("formModal"))$("formModal").classList.add("hidden")});
+$("enquiryForm").addEventListener("submit",e=>{e.preventDefault();$("formMessage").classList.remove("hidden");$("enquiryForm").reset()});
+</script>
+</body></html>
